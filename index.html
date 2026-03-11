@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 影片提示詞工廠 | Premium Prompt Factory</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i data-lucide="zap"></i> PRIME PROMPT
+        </div>
+        <ul class="category-list" id="category-list">
+            <!-- Categories will be injected here -->
+        </ul>
+    </aside>
+
+    <main class="main-wrapper">
+        <div class="top-bar">
+            <h2>選擇角色系統</h2>
+            <button id="random-btn" class="btn-primary">
+                <i data-lucide="shuffle"></i> 隨機探索
+            </button>
+        </div>
+
+        <div class="character-grid" id="character-grid">
+            <!-- Characters will be injected here -->
+        </div>
+
+        <div class="content-area">
+            <div class="prompt-panel">
+                <div class="prompt-header"
+                    style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
+                    <div>
+                        <h3 id="current-title" style="color: var(--accent); font-size: 1.5rem;">請選擇一個角色</h3>
+                        <p id="current-category"
+                            style="color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase;"></p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button id="edit-template-btn" class="btn-secondary"
+                            style="background: rgba(0, 242, 255, 0.1);">
+                            <i data-lucide="edit-3"></i> 編輯
+                        </button>
+                        <button id="add-template-btn" class="btn-secondary" style="background: rgba(255, 62, 62, 0.1);">
+                            <i data-lucide="plus"></i> 新增
+                        </button>
+                        <button id="copy-btn" class="btn-secondary">
+                            <i data-lucide="copy"></i> 複製提示詞
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scene/Effect Variations -->
+                <div class="variation-container" id="variation-list">
+                    <!-- Variation chips will be injected here -->
+                </div>
+
+                <div id="prompt-output" class="prompt-text">
+                    從上方網格中點擊角色以生成完整的 10 秒影片提示詞。
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="copy-toast" class="copy-toast">SUCCESS! COPIED</div>
+
+    <!-- Template Editor Modal -->
+    <div class="modal-overlay" id="editor-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title" style="color: var(--accent);">自定義範本編輯器</h2>
+                <button id="close-modal" class="btn-secondary" style="border-radius: 50%; padding: 0.5rem;">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="editor-grid">
+                <div class="editor-field">
+                    <label>角色名稱/標題</label>
+                    <input type="text" id="edit-title" placeholder="例如: Pokémon 傑尼龜">
+                </div>
+                <div class="editor-field">
+                    <label>分類</label>
+                    <input type="text" id="edit-category" placeholder="例如: 寶可夢">
+                </div>
+            </div>
+
+            <div class="editor-grid" style="margin-bottom: 1.5rem;">
+                <div class="editor-field">
+                    <label>影片設定 (格式: 時長 | 運鏡 | 場景)</label>
+                    <input type="text" id="edit-config" placeholder="例如: 10秒 | 動態追隨 | 雪夜森林">
+                </div>
+                <div class="editor-field">
+                    <label>影像細節 (每行一個)</label>
+                    <input type="text" id="edit-extras" placeholder="例如: 8K超高解析度, 無浮水印 (以逗號或換行分隔)">
+                </div>
+            </div>
+
+            <div class="editor-field" style="margin-bottom: 1.5rem;">
+                <label>初始造型描述</label>
+                <textarea id="edit-initial" placeholder="描述角色的初始外觀..."></textarea>
+            </div>
+            <div class="editor-field" style="margin-bottom: 1.5rem;">
+                <label>進化/最終裝備 (每行一個)</label>
+                <textarea id="edit-final" placeholder="描述進化後的特徵..."></textarea>
+            </div>
+            <div class="editor-field">
+                <label>時間軸描述 (格式: 時間 | 內容，每行一個)</label>
+                <textarea id="edit-timeline" placeholder="例如: 0~2秒 | 角色開始跳舞" style="min-height: 150px;"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="save-template-btn" class="btn-primary">
+                    <i data-lucide="save"></i> 儲存並套用
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>
