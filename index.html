@@ -36,7 +36,7 @@
             <!-- Characters will be injected here -->
         </div>
 
-        <div class="content-area">
+        <div class="content-area" id="main-content-area">
             <div class="prompt-panel">
                 <div class="prompt-header"
                     style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end;">
@@ -66,6 +66,41 @@
 
                 <div id="prompt-output" class="prompt-text">
                     從上方網格中點擊角色以生成完整的 10 秒影片提示詞。
+                </div>
+            </div>
+        </div>
+
+        <!-- Toolbox Area (Hidden by default) -->
+        <div class="content-area" id="toolbox-area" style="display: none; padding-top: 1rem;">
+            <div class="prompt-panel" style="background: rgba(0, 242, 255, 0.03); border: 1px dashed var(--accent); min-height: 70vh;">
+                <div class="prompt-header" style="margin-bottom: 2rem;">
+                    <h2 style="color: var(--accent); display: flex; align-items: center; gap: 0.8rem; font-size: 1.8rem;">
+                        <i data-lucide="languages" style="width: 32px; height: 32px;"></i> 智能翻譯助手 (中 ➔ 英)
+                    </h2>
+                    <p style="color: var(--text-dim);">手動輸入中文提示詞，一鍵轉換為 AI 生成工具所需的英文描述。</p>
+                </div>
+                
+                <div class="translator-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; flex: 1;">
+                    <div class="editor-field" style="height: 100%;">
+                        <label style="font-size: 1rem; margin-bottom: 0.5rem;">中文提示詞 (繁體/簡體)</label>
+                        <textarea id="translate-input" placeholder="請貼上或輸入中文分鏡描述..." style="flex: 1; min-height: 450px; font-size: 1.1rem; line-height: 1.6; background: rgba(0,0,0,0.2);"></textarea>
+                    </div>
+                    <div class="editor-field" style="height: 100%;">
+                        <label style="font-size: 1rem; margin-bottom: 0.5rem;">英文提示詞 (翻譯結果)</label>
+                        <textarea id="translate-output" placeholder="英文翻譯將顯示於此..." style="flex: 1; min-height: 450px; font-size: 1.1rem; line-height: 1.6; background: rgba(0,0,0,0.3); color: var(--accent);" readonly></textarea>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem; display: flex; gap: 1.5rem;">
+                    <button id="start-translate-btn" class="btn-primary" style="background: var(--accent); color: #000; padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        <i data-lucide="zap"></i> 立即開始翻譯
+                    </button>
+                    <button id="copy-en-btn" class="btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                        <i data-lucide="clipboard-check"></i> 複製英文結果
+                    </button>
+                    <button id="clear-translate-btn" class="btn-secondary" style="border-color: rgba(255,255,255,0.1); color: var(--text-dim);">
+                        <i data-lucide="trash-2"></i> 重設
+                    </button>
                 </div>
             </div>
         </div>
